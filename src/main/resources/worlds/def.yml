@@ -1,6 +1,6 @@
 WorldConf:
   name:
-  enable:
+  enable: false
 
 LimitGroups:
   -

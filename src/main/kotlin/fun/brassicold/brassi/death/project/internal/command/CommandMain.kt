@@ -1,5 +1,6 @@
 package `fun`.brassicold.brassi.death.project.internal.command
 
+import `fun`.brassicold.brassi.death.project.internal.core.module.VerifyModule
 import `fun`.brassicold.brassi.death.project.internal.event.PluginImplEvent
 import `fun`.brassicold.brassi.death.project.internal.event.PluginReloadEvent
 import taboolib.common.platform.ProxyCommandSender
@@ -38,6 +39,14 @@ object CommandMain {
             sender.sendLang("plugin-format", pluginId, "正在载入世界数据中...")
             PluginImplEvent.call()
             sender.sendLang("plugin-format", pluginId, "世界配置载入成功!")
+        }
+    }
+
+    @CommandBody(permission = "brassideath.command.check", permissionDefault = PermissionDefault.OP)
+    val check = subCommand {
+        execute<ProxyCommandSender> { sender, _, _ ->
+            VerifyModule.verifyWorldsFile()
+            sender.sendLang("plugin-format", pluginId, "插件状态检测完毕!")
         }
     }
 }
