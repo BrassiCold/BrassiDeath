@@ -1,0 +1,4 @@
+Options:
+  debug: false
+  concurrent-async: true
+  keep-item: true

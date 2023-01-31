@@ -1,0 +1,5 @@
+plugin-load: '&7[ &b{0} &7] &b{0} &6加载成功！'
+plugin-enable: '&7[ &b{0} &7] &b{0} &6启用成功！'
+plugin-disable: '&7[ &b{0} &7] &b{0} &6卸载成功！'
+
+debug-format: '&7[ &b{0}-debug &7] &e{1}'

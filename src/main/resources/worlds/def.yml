@@ -1,0 +1,20 @@
+WorldConf:
+  name:
+  enable:
+
+LimitGroups:
+  -
+    key:
+    weight: ''
+    protect:
+    permission: ''
+    usingGroup:
+    kether-action:
+
+defGroup:
+  key:
+  protect: ''
+  usingGroup:
+  kether-action:
+
+

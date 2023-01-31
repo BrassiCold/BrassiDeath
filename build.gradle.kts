@@ -20,8 +20,6 @@ taboolib {
     install("expansion-command-helper")
     classifier = null
     version = "6.0.10-76"
-
-    relocate("com.esotericsoftware.reflectasm", "com.skillw.asahi.reflectasm")
 }
 
 repositories {
@@ -29,9 +27,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.esotericsoftware:reflectasm:1.11.9")
     compileOnly("com.google.code.gson:gson:2.9.0")
     compileOnly("ink.ptms:nms-all:1.0.0")
+    compileOnly("org.yaml:snakeyaml:1.26")
     compileOnly("ink.ptms.core:v11902:11902-minimize:mapped")
     compileOnly("ink.ptms.core:v11902:11902-minimize:universal")
     compileOnly(kotlin("stdlib"))
