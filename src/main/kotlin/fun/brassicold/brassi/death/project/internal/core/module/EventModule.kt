@@ -19,6 +19,7 @@ object EventModule {
     fun pluginReload(event: PluginReloadEvent) {
         BrassiDeath.setting.reload()
     }
+
     @SubscribeEvent
     fun pluginImpl(event: PluginImplEvent) {
         try {
