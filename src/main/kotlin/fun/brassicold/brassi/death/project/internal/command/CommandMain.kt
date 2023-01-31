@@ -1,8 +1,10 @@
 package `fun`.brassicold.brassi.death.project.internal.command
 
+import `fun`.brassicold.brassi.death.project.internal.event.PluginImplEvent
 import `fun`.brassicold.brassi.death.project.internal.event.PluginReloadEvent
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.*
+import taboolib.common.platform.function.console
 import taboolib.common.platform.function.pluginId
 import taboolib.expansion.createHelper
 import taboolib.module.lang.sendLang
@@ -27,6 +29,15 @@ object CommandMain {
         execute<ProxyCommandSender> { sender, _, _ ->
             PluginReloadEvent.call()
             sender.sendLang("command-reload", pluginId)
+        }
+    }
+
+    @CommandBody(permission = "brassideath.command.impl", permissionDefault = PermissionDefault.OP)
+    val impl = subCommand {
+        execute<ProxyCommandSender> { sender, _, _ ->
+            sender.sendLang("plugin-format", pluginId, "正在载入世界数据中...")
+            PluginImplEvent.call()
+            sender.sendLang("plugin-format", pluginId, "世界配置载入成功!")
         }
     }
 }
