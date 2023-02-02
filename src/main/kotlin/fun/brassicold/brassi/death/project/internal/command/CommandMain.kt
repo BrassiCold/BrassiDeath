@@ -3,6 +3,7 @@ package `fun`.brassicold.brassi.death.project.internal.command
 import `fun`.brassicold.brassi.death.project.internal.core.module.VerifyModule
 import `fun`.brassicold.brassi.death.project.internal.event.PluginImplEvent
 import `fun`.brassicold.brassi.death.project.internal.event.PluginReloadEvent
+import `fun`.brassicold.brassi.death.project.util.ToolsUtil
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.*
 import taboolib.common.platform.function.console
@@ -47,6 +48,16 @@ object CommandMain {
         execute<ProxyCommandSender> { sender, _, _ ->
             VerifyModule.verifyWorldsFile()
             sender.sendLang("plugin-format", pluginId, "插件状态检测完毕!")
+        }
+    }
+
+    @CommandBody(permission = "brassideath.command.info", permissionDefault = PermissionDefault.OP)
+    val info = subCommand {
+        execute<ProxyCommandSender> { sender, _, _ ->
+            sender.sendMessage("§8------§7[§bBrassiDeath§7]§8------")
+            sender.sendMessage("§8|- §e插件接管世界§7[§b${ToolsUtil.worldNumber()}§7]")
+            sender.sendMessage("§8|- §e插件运行模式§7[§b${ToolsUtil.pluginMode()}§7]")
+            sender.sendMessage("§8------§7[§bBrassiDeath§7]§8------")
         }
     }
 }

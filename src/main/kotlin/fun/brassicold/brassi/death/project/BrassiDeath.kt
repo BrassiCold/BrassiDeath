@@ -1,7 +1,6 @@
 package `fun`.brassicold.brassi.death.project
 
 import `fun`.brassicold.brassi.death.project.internal.BrassiDeathLoader
-import `fun`.brassicold.brassi.death.project.internal.core.module.VerifyModule
 import org.yaml.snakeyaml.Yaml
 import taboolib.common.platform.Plugin
 import taboolib.module.configuration.Config

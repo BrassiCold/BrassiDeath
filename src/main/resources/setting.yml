@@ -1,4 +1,25 @@
 Options:
+  #调试模式
   debug: false
+  #多线程异步死亡触发的事件
   concurrent-async: true
+  #保留死亡掉落物品
   keep-item: true
+  #自动重生
+  auto-regeneration: true
+
+DropGroups:
+  -
+    groupId:
+    backpackMode:
+    backpackValue:
+    experienceMode:
+    experienceValue:
+
+
+Kether-Action:
+  -
+    key:  #动作组key
+    action: |-
+      
+  
