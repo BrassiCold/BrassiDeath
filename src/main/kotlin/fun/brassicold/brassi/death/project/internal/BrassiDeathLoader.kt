@@ -1,8 +1,6 @@
 package `fun`.brassicold.brassi.death.project.internal
 
-import taboolib.common.platform.function.console
-import taboolib.common.platform.function.pluginId
-import taboolib.common.platform.function.releaseResourceFile
+import taboolib.common.platform.function.*
 import taboolib.module.lang.sendLang
 
 object BrassiDeathLoader {
@@ -18,8 +16,6 @@ object BrassiDeathLoader {
         console().sendMessage("§b██▄▪▐█▐█•█▌▐█ ▪▐▌▐█▄▪▐█▐█▄▪▐█▐█▌██. ██ ▐█▄▄▌▐█ ▪▐▌ ▐█▌·██▌▐▀")
         console().sendMessage("§b·▀▀▀▀ .▀  ▀ ▀  ▀  ▀▀▀▀  ▀▀▀▀ ▀▀▀▀▀▀▀▀•  ▀▀▀  ▀  ▀  ▀▀▀ ▀▀▀ ·")
         console().sendMessage("")
-
-
         console().sendLang("plugin-enable", pluginId)
     }
     fun disable() {

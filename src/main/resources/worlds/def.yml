@@ -1,11 +1,16 @@
 WorldConf:
-  name:   #世界名
   enable: false  #启用状态
 
 LimitGroups:   #限制组
   -
     key:     #组的key
-    weight:       #权重
+    protect:        #保护格
+    permission: ''     #需要的权限
+    usingGroup:      #使用的掉落组
+    death-message: ''     #死亡信息
+    kether-action:       #死亡动作组key
+  -
+    key:     #组的key
     protect:        #保护格
     permission: ''     #需要的权限
     usingGroup:      #使用的掉落组

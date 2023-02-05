@@ -2,6 +2,7 @@ package `fun`.brassicold.brassi.death.project.internal.core.module
 
 import `fun`.brassicold.brassi.death.project.BrassiDeath.yaml
 import `fun`.brassicold.brassi.death.project.util.ToolsUtil
+import org.bukkit.entity.Player
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
 import taboolib.common.platform.function.console
@@ -42,18 +43,32 @@ object VerifyModule {
         ToolsUtil.tell("|-worlds目录下存在世界配置文件...")
         for (ymlFile in ymlFiles) {
             ToolsUtil.tell("|-正在检测世界配置文件: ${ymlFile.name} | Type: ${ymlFile::class.simpleName}")
-            try {
-                val inputStream by lazy { FileInputStream(ymlFile) }
-                val fileData by lazy { yaml.load<Map<String, Any>>(inputStream) }
-                val worldConf by lazy { fileData["WorldConf"] as Map<*, *> }
-                val enable by lazy { worldConf["enable"] as Boolean }
-                console().sendLang("verify-world-check", pluginId, ymlFile.name, enable )
-            } catch (e: NullPointerException) {
-                console().sendErrorMessage("&4你这世界配置文件保熟吗？ -> ${ymlFile.name}")
-                console().sendErrorMessage("&4${e.message}")
-            }
+            val enable by lazy { checkWorld(ymlFile.name.split(".").toMutableList()[0]) }
+            console().sendLang("verify-world-check", pluginId, ymlFile.name, enable!! )
         }
         console().sendLang("plugin-format", pluginId, "世界配置文件检测完毕!")
         return null
+    }
+
+    fun checkWorld(name: String): Boolean? {
+        val worldConf = "$name.yml"
+        val pluginFolder by lazy { bukkitPlugin.dataFolder }
+        val worldsFile by lazy { File(pluginFolder, "worlds") }
+        val ymlFile by lazy { File(worldsFile, worldConf) }
+        try {
+            val inputStream by lazy { FileInputStream(ymlFile) }
+            val fileData by lazy { yaml.load<Map<String, Any>>(inputStream) }
+            val worldConf by lazy { fileData["WorldConf"] as Map<*, *> }
+            val enable by lazy { worldConf["enable"] as Boolean }
+            return enable
+        } catch (e: NullPointerException) {
+            console().sendErrorMessage("&4你这世界配置文件保熟吗？ -> ${ymlFile.name}")
+            console().sendErrorMessage("&4${e.message}")
+        }
+        return null
+    }
+
+    fun checkPlayerPermission(player: Player, permission: String): Boolean {
+        return player.hasPermission(permission)
     }
 }

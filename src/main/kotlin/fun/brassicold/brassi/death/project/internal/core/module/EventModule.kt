@@ -5,7 +5,10 @@ import `fun`.brassicold.brassi.death.project.internal.core.manager.CentralManage
 import `fun`.brassicold.brassi.death.project.internal.event.PluginImplEvent
 import `fun`.brassicold.brassi.death.project.internal.event.PluginReloadEvent
 import `fun`.brassicold.brassi.death.project.util.ToolsUtil
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Cancellable
 import org.bukkit.event.entity.PlayerDeathEvent
+import taboolib.common.platform.event.EventPriority
 import taboolib.common.platform.event.SubscribeEvent
 import taboolib.common.platform.function.allWorlds
 import taboolib.common.platform.function.console
@@ -21,13 +24,11 @@ object EventModule {
     @SubscribeEvent
     fun pluginReload(event: PluginReloadEvent) {
         BrassiDeath.setting.reload()
+        CentralManager.Conf_List = ConfModule.loadFiles()!!
     }
 
     @SubscribeEvent
     fun pluginImpl(event: PluginImplEvent) {
-
-
-
         try {
             val serverWorlds by lazy { allWorlds() }
             ToolsUtil.tell("|-获取serverWorlds: $serverWorlds | Type: ${serverWorlds::class.simpleName}")
@@ -57,8 +58,9 @@ object EventModule {
         }
 
     }
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun playerDeath(event: PlayerDeathEvent) {
-        CentralManager.preProcessor(event)
+        CentralManager.Conf_Event = event
+        CentralManager.preProcessor()
     }
 }

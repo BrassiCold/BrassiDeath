@@ -55,7 +55,7 @@ object CommandMain {
     val info = subCommand {
         execute<ProxyCommandSender> { sender, _, _ ->
             sender.sendMessage("§8------§7[§bBrassiDeath§7]§8------")
-            sender.sendMessage("§8|- §e插件接管世界§7[§b${ToolsUtil.worldNumber()}§7]")
+            sender.sendMessage("§8|- §e插件接管世界§7[§b${ToolsUtil.worldCheck("size")}§7]")
             sender.sendMessage("§8|- §e插件运行模式§7[§b${ToolsUtil.pluginMode()}§7]")
             sender.sendMessage("§8------§7[§bBrassiDeath§7]§8------")
         }
